@@ -16,7 +16,7 @@ namespace DontStarve {
         RoleEntity role;
         List<PlantEntity> allGrass;
         public Camera mainCamera;
-        Vector3 cameraOffset;
+        public Vector3 cameraOffset;
 
         // 主入口, 相当于 Main(), 只执行一次;
         protected void Start() {
@@ -25,23 +25,24 @@ namespace DontStarve {
             input = new InputEntity();
 
             role = GameObject.Instantiate(rolePrefab);
+            role.Ctor();
             role.transform.position = Vector3.zero; // x = 0, y = 0, z = 0
             role.moveSpeed = 5f;
             role.gatherRadius = 2f;
 
             allGrass = new List<PlantEntity>();
             for (int i = 0; i < 100; i += 1) {
-                float randX = UnityEngine.Random.Range(-10f, 10f);
-                float randZ = UnityEngine.Random.Range(-10f, 10f);
+                float randX = UnityEngine.Random.Range(-30f, 30f);
+                float randZ = UnityEngine.Random.Range(-30f, 30f);
                 Vector3 grassRandPos = new Vector3(randX, 0, randZ);
 
                 int randCount = UnityEngine.Random.Range(1, 5);
 
                 PlantEntity grass = GameObject.Instantiate(grassPrefab);
+                grass.Ctor();
                 grass.id = i;
                 grass.transform.position = grassRandPos;
-                grass.count = randCount;
-                grass.transform.localScale = new Vector3(0.2f, randCount, 0.2f);
+                grass.SetCount(randCount);
 
                 allGrass.Add(grass);
 

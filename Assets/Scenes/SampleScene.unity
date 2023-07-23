@@ -293,14 +293,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 5, z: -7}
+  m_LocalRotation: {x: 0.26336795, y: 0, z: 0, w: 0.9646955}
+  m_LocalPosition: {x: 0, y: 8.45, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.54, y: 0, z: 0}
 --- !u!1 &1077215218
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +333,7 @@ MonoBehaviour:
   rolePrefab: {fileID: 2753429289265319255, guid: 0620e2ef43c5f61448d98f1041b06153, type: 3}
   grassPrefab: {fileID: 1910789754843912079, guid: 44ae4230a7655274dad00b1d513aee9b, type: 3}
   mainCamera: {fileID: 963194227}
+  cameraOffset: {x: 0, y: 7.16, z: -10.52}
 --- !u!4 &1077215220
 Transform:
   m_ObjectHideFlags: 0

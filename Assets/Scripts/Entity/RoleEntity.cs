@@ -15,11 +15,34 @@ namespace DontStarve {
     // 如同 角色和相机互相不知道对方存在
     public class RoleEntity : MonoBehaviour {
 
+        // 动画
+        public Animator animator;
+
         string roleName; // 任何字段不声明 `访问修饰符` 默认 private
         public float moveSpeed;
         public float gatherRadius; // 采集半径
 
         public int grassStorage; // 角色持有多少草
+
+        // Ctor 是 Constructor 的缩写, 这是我个人的习惯
+        public void Ctor() {
+            // GetComponent 的用法
+            // int childCount = transform.childCount;
+            // for (int i = 0; i < childCount; i += 1) {
+            //     Transform child = transform.GetChild(i);
+            //     animator = child.GetComponent<Animator>();
+            //     if (animator != null) {
+            //         break;
+            //     }
+            // }
+
+            // 等同于
+            animator = GetComponentInChildren<Animator>();
+        }
+
+        public void Anim_Run(float moveSpeed) {
+            animator.SetFloat("MoveSpeed", moveSpeed);
+        }
 
         // 移动方法
         // inputMoveAxis: 输入的移动方向, WSAD/方向键
@@ -31,6 +54,10 @@ namespace DontStarve {
             // 三维移动方向
             Vector3 moveInput3 = new Vector3(x, 0, z);
 
+            // 玩家按住移动方向, 并且角色有移动时, 那么 Move
+            float magnitude = moveInput3.magnitude; // 长度
+            Anim_Run(magnitude);
+
             // 1. 获取数据
             Vector3 pos = transform.position;
 
@@ -40,17 +67,23 @@ namespace DontStarve {
             // 3. 设置数据
             transform.position = pos;
 
-            // 4. 渲染(Unity会自动渲染)
-            
+            // 4. 改变朝向
+            // 从 `当前位置` 看向 `一个点`
+            // 自动旋转
+            Vector3 lookAtPoint = pos + moveInput3;
+            transform.LookAt(lookAtPoint);
+
+            // 5. 渲染(Unity会自动渲染)
+
         }
 
         public bool GatherGrass(PlantEntity grass) {
             bool isClear;
-            if (grass.count > 0) {
+            if (grass.GetCount() > 0) {
                 grassStorage += 1;
-                grass.count -= 1;
+                grass.SetCount(grass.GetCount() - 1);
 
-                if (grass.count <= 0) {
+                if (grass.GetCount() <= 0) {
                     grass.SetDead();
                     isClear = true;
                     return isClear;
