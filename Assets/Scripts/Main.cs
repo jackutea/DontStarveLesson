@@ -40,6 +40,7 @@ namespace DontStarve {
             input = new InputEntity();
 
             panel_Login.Ctor();
+            // 把低层委托绑定到高层的函数
             panel_Login.onStartGameHandle = StartGame;
             // panel_Login 点击后, 触发 StartGame
 
