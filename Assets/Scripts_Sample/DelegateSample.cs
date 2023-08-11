@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace DontStarve {
+namespace DontStarve.Sample {
 
     // 委托示例
     public class DelegateSample {

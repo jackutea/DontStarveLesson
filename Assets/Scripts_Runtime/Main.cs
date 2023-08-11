@@ -8,10 +8,6 @@ namespace DontStarve {
     // 世界
     public class Main : MonoBehaviour {
 
-        // Samples
-        public DelegateSample delegateSample;
-        public UISample uiSample;
-
         // 声明了 public 或 [SerializeField] 的字段, 会在Unity的Inspector面板上显示
         public RoleEntity rolePrefab; // 预制件
         public PlantEntity grassPrefab;
@@ -29,12 +25,6 @@ namespace DontStarve {
 
         // 主入口, 相当于 Main(), 只执行一次;
         protected void Start() {
-
-            // Samples
-            delegateSample = new DelegateSample();
-            delegateSample.Enter();
-
-            uiSample.Ctor();
 
             // Ctor
             input = new InputEntity();
@@ -84,9 +74,6 @@ namespace DontStarve {
         // 主入口, 自动循环
         // deltaTime 是上一帧到这一帧的时间间隔. 每秒的deltaTime总和是1
         protected void Update() { // 会在每帧调用一次, 一秒内总共调用的次数是 1 / deltaTime
-
-            delegateSample.Tick();
-            uiSample.Tick();
 
             if (role == null) {
                 return;

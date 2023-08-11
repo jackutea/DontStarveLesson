@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DontStarve {
+namespace DontStarve.Sample {
 
     public class UISample : MonoBehaviour {
 
